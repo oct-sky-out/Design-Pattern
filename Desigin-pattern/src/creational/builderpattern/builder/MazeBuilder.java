@@ -3,11 +3,17 @@ package creational.builderpattern.builder;
 import creational.builderpattern.classes.Maze;
 
 public interface MazeBuilder {
-    default void buildMaze() {};
+    default MazeBuilder buildMaze() {
+        return null;
+    };
 
-    default void buildRoom(int n) {};
+    default MazeBuilder buildRoom(int n) {
+        return null;
+    };
 
-    default void buildDoor(int roomFrom, int roomTo){};
+    default MazeBuilder buildDoor(int roomFrom, int roomTo){
+        return null;
+    };
 
     default Maze getMaze() {
         return null;

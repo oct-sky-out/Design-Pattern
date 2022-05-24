@@ -10,25 +10,28 @@ public class StandardMazeBuilder implements MazeBuilder{
     private Maze currentMaze;
 
     @Override
-    public void buildMaze() {
+    public MazeBuilder buildMaze() {
         this.currentMaze = new Maze();
+        return this;
     }
 
     @Override
-    public void buildRoom(int n) {
+    public MazeBuilder buildRoom(int n) {
         if(Objects.nonNull(currentMaze.getRoom(n))){
             currentMaze.addRoom(new Room(n));
         }
+        return this;
     }
 
     @Override
-    public void buildDoor(int roomFrom, int roomTo) {
+    public MazeBuilder buildDoor(int roomFrom, int roomTo) {
         Room from = currentMaze.getRoom(roomFrom);
         Room to = currentMaze.getRoom(roomTo);
         Door door = new Door(from, to);
 
         from.setSide(Wall.commonWall(from, to), door);
         to.setSide(Wall.commonWall(to, from), door);
+        return this;
     }
 
     @Override

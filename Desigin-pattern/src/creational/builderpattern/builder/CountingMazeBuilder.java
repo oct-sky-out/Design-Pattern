@@ -13,18 +13,21 @@ public class CountingMazeBuilder implements MazeBuilder{
 
 
     @Override
-    public void buildMaze() {
+    public MazeBuilder buildMaze() {
         MazeBuilder.super.buildMaze();
+        return this;
     }
 
     @Override
-    public void buildRoom(int n) {
+    public MazeBuilder buildRoom(int n) {
         this.rooms++;
+        return this;
     }
 
     @Override
-    public void buildDoor(int roomFrom, int roomTo) {
+    public MazeBuilder buildDoor(int roomFrom, int roomTo) {
         doors++;
+        return this;
     }
 
     @Override
@@ -32,9 +35,9 @@ public class CountingMazeBuilder implements MazeBuilder{
         throw new RuntimeException("not support");
     }
 
-    public void setCounts(int rooms, int doors){
+    public MazeBuilder setCounts(int rooms, int doors){
         this.rooms = rooms;
         this.doors = doors;
-
+        return this;
     }
 }
